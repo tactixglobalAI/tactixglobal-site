@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TactixGlobalAI - Technology in the Service of Public Safety</title>
+    <style>
+        /* Custom font for logo text */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+        
+        :root {
+            --primary-color: #00b8d4;
+            --secondary-color: #131313;
+            --text-color: #ffffff;
+            --dark-bg: #0f0f0f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        /* Header and logo styles */
+        header {
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            height: auto;
+            min-height: 80px;
+        }
+        
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            margin-right: 40px; /* More space between logo and nav */
+        }
+        
+        .logo-text {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 28px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+        
+        nav {
+            flex-grow: 1; /* Allow nav to take available space */
+            display: flex;
+            justify-content: flex-start; /* Align nav items to the left */
+        }
+        
+        .button {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .button.light {
+            background-color: var(--text-color);
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            padding: 140px 0 50px 0; /* Increased top padding to push content down */
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content {
+            padding: 0 5%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 0 20px;
+            line-height: 1.2;
+        }
+        
+        /* Products section */
+        .products {
+            padding: 20px 5% 60px;
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: auto;
+            min-height: 400px; /* Increased height to accommodate image and text */
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 184, 212, 0.3);
+        }
+        
+        .product-image {
+            height: 250px; /* Increased height for better image display */
+            position: relative;
+            background-color: #222;
+            overflow: hidden;
+            display: block;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border: none;
+        }
+        
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(30, 30, 30, 1); /* Solid background to ensure separation */
+            position: relative;
+            z-index: 2;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .product-description {
+            margin-top: 15px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+        
+        .product-description.expanded {
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(0, 184, 212, 0.9);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+        
+        /* Contact section */
+        .contact {
+            padding: 60px 5%;
+            background-color: rgba(15, 15, 15, 0.9);
+            margin-top: 60px;
+            display: none; /* Hide by default */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact.active {
+            display: block; /* Show when active */
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-left {
+            flex: 1 1 60%;
+            min-width: 300px;
+        }
+        
+        .contact-right {
+            flex: 1 1 30%;
+            min-width: 250px;
+        }
+        
+        .contact-form h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            color: #fff;
+        }
+        
+        .contact-form p {
+            margin-bottom: 30px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+        
+        .required:after {
+            content: "*";
+            color: var(--primary-color);
+            margin-left: 3px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: rgba(30, 30, 30, 0.8);
+            color: var(--text-color);
+            border-radius: 5px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: rgba(0, 184, 212, 0.5);
+        }
+        
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+        }
+        
+        select option {
+            background-color: #1a1a1a;
+            color: white;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            padding: 30px;
+            background-color: rgba(20, 20, 20, 0.7);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            font-weight: 300;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            bottom: -8px;
+        }
+        
+        .contact-detail {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .contact-email {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            padding: 20px 5%;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 15px;
+                min-height: 70px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image {
+                height: 200px; /* Slightly smaller for mobile */
+            }
+            
+            .product-card {
+                min-height: 350px; /* Adjusted for mobile */
+            }
+            
+            .button {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                margin-right: 5px;
+            }
+            
+            .hero {
+                padding: 90px 0 30px; /* Adjusted for smaller header */
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .contact-form h2 {
+                font-size: 2rem;
+            }
+            
+            .contact {
+                padding: 40px 5%;
+            }
+            
+            .contact-right {
+                margin-top: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                min-height: 60px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+            
+            .button {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .hero {
+                padding: 80px 0 20px; /* Adjusted for smaller header */
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .product-title {
+                font-size: 1.1rem;
+            }
+            
+            .product-image {
+                height: 180px; /* Even smaller for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <span class="logo-text">TactixGlobal</span>
+        </a>
+        <div style="padding-right: 5px;">
+            <a href="#contact" class="button">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="section-title">Our Solutions</h2>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="20250514_1506_Drone Over Desert_storyboard_01jv8dbpcnf42txz4a1506djd6.gif" alt="Edge AI-Driven Drone Operation" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
+                    <div class="category-tag">AUTONOMOUS</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title" onclick="toggleDescription(this)">Edge AI-Driven Drone Operation with Object Detection</h3>
+                    <div class="product-description">
+                        <p>Our advanced autonomous drone surveillance system leverages Edge AI technology for real-time object detection, sectional identification, and target tracking. Operating seamlessly even in non-GPS environments, this system maintains continuous situational awareness while ensuring human oversight for critical decisions.</p>
+                        <p>Key features include AI-powered object detection, intelligent obstacle avoidance, sectional identification of objects and vehicles, and secure, encrypted communications—optimized for reliable performance in complex and dynamic environments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="dronedetect.gif" alt="Drone Detection & Response Solutions" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
+                    <div class="category-tag">COUNTER-UAS</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title" onclick="toggleDescription(this)">Drone Detection and Response Solutions</h3>
+                    <div class="product-description">
+                        <p>Our system uses advanced RF and Software-Defined Radio (SDR) technology to detect, track, and respond to unauthorized drones. It identifies drone signals across various frequency ranges, providing early alerts even in challenging environments.</p>
+                        <p>Designed for flexibility, the solution can be deployed as a fixed installation or quickly set up in the field. It offers detailed spectrum analysis, automatic threat identification, and a range of response options, including signal disruption or safe intervention. This system is ideal for environments where proactive drone management is essential.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="lorawan.gif" alt="LoRaWAN Communication Solution" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
+                    <div class="category-tag">COMMUNICATIONS</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title" onclick="toggleDescription(this)">LoRaWAN Communication Solution</h3>
+                    <div class="product-description">
+                        <p>Our LoRaWAN-based communication system enables drones to maintain reliable connectivity with ground units over extensive distances, even in non-GPS environments. This technology provides secure, low-power, long-range communication essential for operations in remote or challenging terrain.</p>
+                        <p>With transmission ranges up to 10km in optimal conditions and mesh networking capabilities, our solution ensures continuous tactical communications in areas where traditional networks fail. The system supports encrypted data transfer, real-time telemetry, and command relay with minimal latency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-flex">
+                <div class="contact-left">
+                    <h2>Write to Us</h2>
+                    <p>Have a question, proposed collaboration or more for the TactixGlobalAI team? Fill out the form below and we'll get back to you shortly.</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="required">First Name</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Last Name</label>
+                                <input type="text" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="required">Phone</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Email</label>
+                                <input type="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group" style="width: 100%;">
+                                <label>Department/Agency/Company</label>
+                                <input type="text">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select id="country">
+                                    <option value="">Select Country</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>State/Province</label>
+                                <select id="state">
+                                    <option value="">Select State/Province</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="required">Inquiry Type</label>
+                                <select required>
+                                    <option value="">Please Select</option>
+                                    <option value="general">General Information</option>
+                                    <option value="product">Product Inquiry</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="demo">Demo Request</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Agency Type</label>
+                                <select required>
+                                    <option value="">Please Select</option>
+                                    <option value="law">Law Enforcement</option>
+                                    <option value="military">Military</option>
+                                    <option value="government">Government</option>
+                                    <option value="private">Private Sector</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea></textarea>
+                        </div>
+                        
+                        <button type="submit" class="button" style="margin-top: 20px;">Submit</button>
+                    </form>
+                </div>
+                
+                <div class="contact-right">
+                    <div class="contact-info">
+                        <h3>Contacts</h3>
+                        <p class="contact-detail">+1 (888) 555-0123</p>
+                        <p class="contact-detail">
+                            <a href="mailto:contact@tactixGlobal.AI" class="contact-email">contact@tactixGlobal.AI</a>
+                        </p>
+                        
+                        <h3 style="margin-top: 40px;">Headquarters</h3>
+                        <p class="contact-detail">1234 Tech Drive</p>
+                        <p class="contact-detail">Simi Valley, CA 93065</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p class="footer-text">© 2025 TACTIXGLOBAL.AI. A division of BIGDOG SERVICES LLC. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Enhanced toggle description function
+        function toggleDescription(element) {
+            const description = element.nextElementSibling;
+            const allDescriptions = document.querySelectorAll('.product-description');
+            
+            // First close all other descriptions
+            allDescriptions.forEach(desc => {
+                desc.classList.remove('expanded');
+                desc.style.height = '0';
+            });
+            
+            // Then expand the clicked one if it wasn't already expanded
+            if (!description.classList.contains('expanded')) {
+                description.classList.add('expanded');
+                description.style.height = description.scrollHeight + 'px';
+            }
+        }
+        
+        // Handle contact form display
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactSection = document.getElementById('contact');
+            const contactLinks = document.querySelectorAll('a[href="#contact"]');
+            
+            // Add click event to all contact links
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Show contact section
+                    contactSection.classList.add('active');
+                    contactSection.style.display = 'block';
+                    
+                    // Ensure title is "Write to Us"
+                    const contactTitle = contactSection.querySelector('h2');
+                    if (contactTitle) {
+                        contactTitle.textContent = 'Write to Us';
+                    }
+                    
+                    // Scroll to contact section
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Form submitted! In a production environment, this would send an email to contact@tactixGlobal.AI');
+                });
+            }
+            
+            // Populate country dropdown with proper initialization
+            const countrySelect = document.getElementById('country');
+            const stateSelect = document.getElementById('state');
+            
+            if (countrySelect && stateSelect) {
+                // Define countries data
+                const countries = [
+                    { name: 'United States', code: 'US' },
+                    { name: 'Canada', code: 'CA' },
+                    { name: 'United Kingdom', code: 'GB' },
+                    { name: 'Australia', code: 'AU' },
+                    { name: 'Germany', code: 'DE' },
+                    { name: 'France', code: 'FR' },
+                    { name: 'Japan', code: 'JP' },
+                    { name: 'China', code: 'CN' },
+                    { name: 'India', code: 'IN' },
+                    { name: 'Brazil', code: 'BR' },
+                    { name: 'Mexico', code: 'MX' },
+                    { name: 'South Korea', code: 'KR' },
+                    { name: 'Spain', code: 'ES' },
+                    { name: 'Italy', code: 'IT' },
+                    { name: 'Netherlands', code: 'NL' },
+                    { name: 'South Africa', code: 'ZA' },
+                    { name: 'Singapore', code: 'SG' },
+                    { name: 'Israel', code: 'IL' },
+                    { name: 'New Zealand', code: 'NZ' },
+                    { name: 'United Arab Emirates', code: 'AE' }
+                ];
+                
+                const states = {
+                    'US': [
+                        'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+                        'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+                        'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+                        'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
+                        'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
+                        'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+                        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+                    ],
+                    'CA': [
+                        'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 
+                        'Northwest Territories', 'Nova Scotia', 'Nunavut', 'Ontario', 'Prince Edward Island', 
+                        'Quebec', 'Saskatchewan', 'Yukon'
+                    ],
+                    'AU': [
+                        'Australian Capital Territory', 'New South Wales', 'Northern Territory', 'Queensland', 
+                        'South Australia', 'Tasmania', 'Victoria', 'Western Australia'
+                    ],
+                    'GB': [
+                        'England', 'Northern Ireland', 'Scotland', 'Wales'
+                    ]
+                };
+                
+                // Clear existing options first
+                countrySelect.innerHTML = '<option value="">Select Country</option>';
+                
+                // Add countries to dropdown
+                countries.forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country.code;
+                    option.textContent = country.name;
+                    countrySelect.appendChild(option);
+                });
+                
+                // Update states when country changes
+                countrySelect.addEventListener('change', function() {
+                    const country = this.value;
+                    
+                    // Clear state dropdown
+                    stateSelect.innerHTML = '<option value="">Select State/Province</option>';
+                    
+                    // Add states if available for selected country
+                    if (states[country]) {
+                        states[country].forEach(state => {
+                            const option = document.createElement('option');
+                            option.value = state;
+                            option.textContent = state;
+                            stateSelect.appendChild(option);
+                        });
+                        stateSelect.disabled = false;
+                    } else {
+                        stateSelect.disabled = true;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
