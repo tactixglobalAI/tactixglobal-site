@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TactixGlobalAI - Technology in the Service of Public Safety</title>
+    <title>TactixGlobal - Advanced Defense Technology Solutions</title>
+    <!-- Same CSS as original with a few tweaks -->
     <style>
         /* Custom font for logo text */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
@@ -66,9 +67,29 @@
         }
         
         nav {
-            flex-grow: 1; /* Allow nav to take available space */
+            flex-grow: 1;
             display: flex;
-            justify-content: flex-start; /* Align nav items to the left */
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
         
         .button {
@@ -89,11 +110,14 @@
         }
         
         .hero {
-            padding: 140px 0 50px 0; /* Increased top padding to push content down */
+            padding: 140px 0 50px 0;
             width: 100%;
             max-width: 100%;
             text-align: center;
             margin-bottom: 30px;
+            background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.9)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
         }
         
         .hero-content {
@@ -105,17 +129,72 @@
         
         .section-title {
             font-size: 3rem;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             text-align: center;
             padding: 0 20px;
             line-height: 1.2;
         }
         
+        .section-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+        
+        /* Adding a new section for credentials */
+        .credentials {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .credentials-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .credential-item {
+            flex: 0 0 auto;
+            width: 200px;
+            text-align: center;
+        }
+        
+        .credential-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+        
+        .credential-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .credential-description {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+        
         /* Products section */
         .products {
-            padding: 20px 5% 60px;
+            padding: 60px 5%;
             width: 100%;
             max-width: 100%;
+        }
+        
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto 40px;
         }
         
         .product-grid {
@@ -132,7 +211,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             height: auto;
-            min-height: 400px; /* Increased height to accommodate image and text */
+            min-height: 400px;
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -146,7 +225,7 @@
         }
         
         .product-image {
-            height: 250px; /* Increased height for better image display */
+            height: 250px;
             position: relative;
             background-color: #222;
             overflow: hidden;
@@ -167,7 +246,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            background-color: rgba(30, 30, 30, 1); /* Solid background to ensure separation */
+            background-color: rgba(30, 30, 30, 1);
             position: relative;
             z-index: 2;
         }
@@ -191,6 +270,27 @@
             margin-bottom: 15px;
         }
         
+        .product-specs {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .spec-label {
+            opacity: 0.7;
+        }
+        
+        .spec-value {
+            font-weight: 600;
+        }
+        
         .category-tag {
             position: absolute;
             top: 15px;
@@ -204,17 +304,75 @@
             text-transform: uppercase;
         }
         
+        /* Team section */
+        .team {
+            padding: 60px 5%;
+            background-color: rgba(20, 20, 20, 0.5);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo {
+            height: 200px;
+            background-color: #333;
+            position: relative;
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .member-title {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .member-bio {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
         /* Contact section */
         .contact {
             padding: 60px 5%;
             background-color: rgba(15, 15, 15, 0.9);
-            margin-top: 60px;
-            display: none; /* Hide by default */
+            margin-top: 0;
+            display: none;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .contact.active {
-            display: block; /* Show when active */
+            display: block;
         }
         
         .contact-container {
@@ -354,9 +512,143 @@
             flex: 1;
         }
         
+        /* Clients section */
+        .clients {
+            padding: 60px 5%;
+            text-align: center;
+        }
+        
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        
+        .client-logo {
+            width: 150px;
+            height: 80px;
+            background-color: rgba(30, 30, 30, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            filter: grayscale(100%) brightness(0.8);
+            transition: all 0.3s;
+            padding: 10px;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0) brightness(1);
+        }
+        
+        .client-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            opacity: 0.7;
+        }
+        
+        .client-logo:hover img {
+            opacity: 1;
+        }
+        
+        /* Compliance section */
+        .compliance {
+            padding: 40px 5%;
+            background-color: rgba(10, 10, 10, 0.7);
+            text-align: center;
+        }
+        
+        .compliance-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .compliance-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .compliance-item {
+            flex: 0 1 300px;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.5);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .compliance-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .compliance-description {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
         footer {
             background-color: var(--secondary-color);
-            padding: 20px 5%;
+            padding: 40px 5% 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-column {
+            flex: 1 1 200px;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            bottom: -8px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
             text-align: center;
         }
         
@@ -386,11 +678,11 @@
             }
             
             .product-image {
-                height: 200px; /* Slightly smaller for mobile */
+                height: 200px;
             }
             
             .product-card {
-                min-height: 350px; /* Adjusted for mobile */
+                min-height: 350px;
             }
             
             .button {
@@ -400,7 +692,7 @@
             }
             
             .hero {
-                padding: 90px 0 30px; /* Adjusted for smaller header */
+                padding: 90px 0 30px;
             }
             
             .form-row {
@@ -419,6 +711,10 @@
             .contact-right {
                 margin-top: 30px;
             }
+            
+            .nav-links {
+                display: none;
+            }
         }
         
         @media (max-width: 480px) {
@@ -436,7 +732,7 @@
             }
             
             .hero {
-                padding: 80px 0 20px; /* Adjusted for smaller header */
+                padding: 80px 0 20px;
             }
             
             .section-title {
@@ -448,7 +744,7 @@
             }
             
             .product-image {
-                height: 180px; /* Even smaller for very small screens */
+                height: 180px;
             }
         }
     </style>
@@ -458,58 +754,403 @@
         <a href="#" class="logo">
             <span class="logo-text">TactixGlobal</span>
         </a>
-        <div style="padding-right: 5px;">
-            <a href="#contact" class="button">Contact Us</a>
-        </div>
+        <nav>
+            <div class="nav-links">
+                <a href="#products">Solutions</a>
+                <a href="#innovation">R&D Capabilities</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div>
+                <a href="#contact" class="button">Contact Us</a>
+            </div>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2 class="section-title">Our Solutions</h2>
+    <section class="products" id="products" style="padding-top: 110px;">
+        <div class="section-header">
+            <h2 class="section-title">Core Technologies</h2>
+            <p class="section-subtitle">Innovative systems designed for research, development, and customization across multiple applications</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-color: #000;">
+                    <img src="sectional_tank_detection.jpg" alt="Sectional Object Detection" style="width: 100%; height: 100%; object-fit: contain; background-color: #000;" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
+                    <div class="category-tag">AI VISION</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title" onclick="toggleDescription(this)">Sectional Object Detection System</h3>
+                    <div class="product-description">
+                        <p>Our Sectional Object Detection System provides precise identification and classification of individual components on military vehicles in real-time. Leveraging advanced AI-driven image analysis, the system can segment and distinguish critical structural elements such as the main body, turret, weaponry, and mobility systems, enabling enhanced situational awareness and threat assessment.</p>
+                        <p>Designed for high-performance operation even in challenging conditions, our system is optimized for real-time processing on edge computing devices. This allows for tactical analysis in disconnected environments, ensuring mission-critical insights wherever they are needed.</p>
+                        
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Key Features:</span>
+                                <span class="spec-value">Component-level identification</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Multi-scale feature recognition</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Custom component labeling</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">High-precision boundary detection</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image" style="background-color: #000;">
+                    <img src="drone_counter_system_flow.jpg" alt="Drone Signal Analysis & Counter-Response System" style="width: 100%; height: 100%; object-fit: contain; background-color: #000;" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
+                    <div class="category-tag">DETECTION</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title" onclick="toggleDescription(this)">Drone Signal Analysis & Counter-Response System</h3>
+                    <div class="product-description">
+                        <p>Our integrated drone detection and countermeasure system combines multiple sensor technologies including radar, camera systems, and software-defined radio to identify and analyze drone communications in real-time. This multi-layered approach enables detection, tracking, and classification of individual drones and swarms across diverse operational environments.</p>
+                        <p>The system incorporates an interceptor component that can deploy appropriate countermeasures based on threat assessment. Our signal processing technology provides deep analysis of drone command and control signatures, enabling precise drone type identification and providing operators with actionable intelligence for security decision-making.</p>
+                        
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Key Features:</span>
+                                <span class="spec-value">Multi-sensor detection fusion</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Drone signature classification</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Swarm detection capability</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Integrated countermeasure options</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image" style="background-color: #1a237e; overflow: hidden;">
+                    <iframe id="lorawan-svg-container" src="about:blank" style="width: 100%; height: 100%; border: none;" scrolling="no"></iframe>
+                    <div class="category-tag">COMMUNICATIONS</div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <!-- Background with terrain effect -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#283593;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="terrainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#33691e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1b5e20;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4caf50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2e7d32;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="signalRadial" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#00b8d4;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#00b8d4;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Signal Wave Animation -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Sky Background -->
+  <rect x="0" y="0" width="1000" height="600" fill="url(#skyGradient)" />
+  
+  <!-- Terrain -->
+  <path d="M0,450 Q250,400 500,450 T1000,430 V600 H0 Z" fill="url(#terrainGradient)" />
+  
+  <!-- Mountains in background -->
+  <path d="M0,450 L100,350 L200,425 L300,300 L400,430 L500,320 L600,410 L700,330 L800,450 L900,380 L1000,450 V450 H0 Z" fill="url(#mountainGradient)" />
+  
+  <!-- Command Center / Base Station -->
+  <g transform="translate(140, 470)">
+    <!-- Base building -->
+    <rect x="-50" y="-40" width="100" height="40" rx="5" ry="5" fill="#424242" stroke="#212121" stroke-width="2" />
+    <rect x="-40" y="-60" width="80" height="20" rx="2" ry="2" fill="#616161" stroke="#212121" stroke-width="1" />
+    <!-- Antenna -->
+    <line x1="0" y1="-60" x2="0" y2="-90" stroke="#BDBDBD" stroke-width="3" />
+    <polygon points="-8,-75 8,-75 0,-95" fill="#BDBDBD" stroke="#9E9E9E" stroke-width="1" />
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Command Center</text>
+    
+    <!-- Control signals animation -->
+    <circle cx="0" cy="-75" r="30" fill="none" stroke="#00b8d4" stroke-width="1.5" opacity="0.6">
+      <animate attributeName="r" from="10" to="60" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.6" to="0" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="-75" r="30" fill="none" stroke="#00b8d4" stroke-width="1.5" opacity="0.6">
+      <animate attributeName="r" from="10" to="60" dur="3s" begin="1s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.6" to="0" dur="3s" begin="1s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Field Nodes / LoRa Sensors -->
+  <g transform="translate(250, 500)">
+    <!-- Sensor housing -->
+    <rect x="-15" y="-25" width="30" height="25" rx="2" ry="2" fill="#78909C" stroke="#455A64" stroke-width="1" />
+    <!-- Sensor antenna -->
+    <line x1="0" y1="-25" x2="0" y2="-40" stroke="#B0BEC5" stroke-width="2" />
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">LoRa Sensor</text>
+    
+    <!-- Signal indicator -->
+    <circle cx="0" cy="-30" r="15" fill="none" stroke="#80DEEA" stroke-width="1" opacity="0.5">
+      <animate attributeName="r" from="5" to="25" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <g transform="translate(400, 480)">
+    <!-- Sensor housing -->
+    <rect x="-15" y="-25" width="30" height="25" rx="2" ry="2" fill="#78909C" stroke="#455A64" stroke-width="1" />
+    <!-- Sensor antenna -->
+    <line x1="0" y1="-25" x2="0" y2="-40" stroke="#B0BEC5" stroke-width="2" />
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">LoRa Sensor</text>
+    
+    <!-- Signal indicator -->
+    <circle cx="0" cy="-30" r="15" fill="none" stroke="#80DEEA" stroke-width="1" opacity="0.5">
+      <animate attributeName="r" from="5" to="25" dur="2s" begin="0.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.5" to="0" dur="2s" begin="0.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <g transform="translate(550, 490)">
+    <!-- Sensor housing -->
+    <rect x="-15" y="-25" width="30" height="25" rx="2" ry="2" fill="#78909C" stroke="#455A64" stroke-width="1" />
+    <!-- Sensor antenna -->
+    <line x1="0" y1="-25" x2="0" y2="-40" stroke="#B0BEC5" stroke-width="2" />
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">LoRa Sensor</text>
+    
+    <!-- Signal indicator -->
+    <circle cx="0" cy="-30" r="15" fill="none" stroke="#80DEEA" stroke-width="1" opacity="0.5">
+      <animate attributeName="r" from="5" to="25" dur="2s" begin="1s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.5" to="0" dur="2s" begin="1s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Gateway Node -->
+  <g transform="translate(700, 460)">
+    <!-- Gateway box -->
+    <rect x="-30" y="-45" width="60" height="45" rx="3" ry="3" fill="#546E7A" stroke="#37474F" stroke-width="2" />
+    <!-- Gateway antennas -->
+    <line x1="-15" y1="-45" x2="-15" y2="-75" stroke="#CFD8DC" stroke-width="2" />
+    <line x1="15" y1="-45" x2="15" y2="-75" stroke="#CFD8DC" stroke-width="2" />
+    <text x="0" y="15" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Gateway Node</text>
+    
+    <!-- Gateway signals -->
+    <circle cx="0" cy="-45" r="40" fill="none" stroke="#4DD0E1" stroke-width="1.5" opacity="0.6">
+      <animate attributeName="r" from="20" to="80" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.6" to="0" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="-45" r="40" fill="none" stroke="#4DD0E1" stroke-width="1.5" opacity="0.6">
+      <animate attributeName="r" from="20" to="80" dur="4s" begin="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.6" to="0" dur="4s" begin="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Drone -->
+  <g transform="translate(500, 200)">
+    <!-- Drone body -->
+    <rect x="-25" y="-10" width="50" height="20" rx="5" ry="5" fill="#263238" stroke="#000" stroke-width="1.5" />
+    <!-- Rotors -->
+    <g>
+      <circle cx="-25" cy="-25" r="15" fill="none" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-33" y1="-25" x2="-17" y2="-25" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-25" y1="-33" x2="-25" y2="-17" stroke="#455A64" stroke-width="1.5" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1s" repeatCount="indefinite" />
+    </g>
+    <g transform="translate(50, 0)">
+      <circle cx="-25" cy="-25" r="15" fill="none" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-33" y1="-25" x2="-17" y2="-25" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-25" y1="-33" x2="-25" y2="-17" stroke="#455A64" stroke-width="1.5" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1s" repeatCount="indefinite" />
+    </g>
+    <g transform="translate(0, 30)">
+      <circle cx="-25" cy="-25" r="15" fill="none" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-33" y1="-25" x2="-17" y2="-25" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-25" y1="-33" x2="-25" y2="-17" stroke="#455A64" stroke-width="1.5" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1s" repeatCount="indefinite" />
+    </g>
+    <g transform="translate(50, 30)">
+      <circle cx="-25" cy="-25" r="15" fill="none" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-33" y1="-25" x2="-17" y2="-25" stroke="#455A64" stroke-width="1.5" />
+      <line x1="-25" y1="-33" x2="-25" y2="-17" stroke="#455A64" stroke-width="1.5" />
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1s" repeatCount="indefinite" />
+    </g>
+    <!-- Antenna -->
+    <line x1="0" y1="-10" x2="0" y2="-25" stroke="#B0BEC5" stroke-width="2" />
+    <text x="0" y="35" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Drone</text>
+    
+    <!-- Drone communication signals -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#4FC3F7" stroke-width="1.5" opacity="0.6">
+      <animate attributeName="r" from="10" to="40" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Human Operator -->
+  <g transform="translate(870, 450)">
+    <!-- Control station -->
+    <rect x="-60" y="-40" width="120" height="40" rx="5" ry="5" fill="#37474F" stroke="#263238" stroke-width="2" />
+    <rect x="-50" y="-35" width="100" height="30" rx="3" ry="3" fill="#0288D1" stroke="#01579B" stroke-width="1" />
+    <!-- Operator -->
+    <circle cx="-15" cy="-70" r="15" fill="#90A4AE" stroke="#607D8B" stroke-width="1" />
+    <rect x="-25" y="-55" width="20" height="30" rx="5" ry="5" fill="#90A4AE" stroke="#607D8B" stroke-width="1" />
+    <text x="0" y="15" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Human Operator</text>
+  </g>
+  
+  <!-- Connection lines between components -->
+  <!-- Command center to Gateway -->
+  <line x1="140" y1="395" x2="700" y2="415" stroke="#80DEEA" stroke-width="2" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="100" dur="5s" repeatCount="indefinite" />
+  </line>
+  
+  <!-- Command center to Human -->
+  <line x1="140" y1="395" x2="870" y2="410" stroke="#4DD0E1" stroke-width="2" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="100" dur="5s" repeatCount="indefinite" />
+  </line>
+  
+  <!-- Gateway to Drone -->
+  <line x1="700" y1="415" x2="500" y2="200" stroke="#4FC3F7" stroke-width="2" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="0" to="100" dur="3s" repeatCount="indefinite" />
+  </line>
+  
+  <!-- Sensors to Gateway -->
+  <line x1="250" y1="475" x2="700" y2="415" stroke="#4DD0E1" stroke-width="1.5" stroke-dasharray="3,3">
+    <animate attributeName="stroke-dashoffset" from="0" to="60" dur="4s" repeatCount="indefinite" />
+  </line>
+  <line x1="400" y1="455" x2="700" y2="415" stroke="#4DD0E1" stroke-width="1.5" stroke-dasharray="3,3">
+    <animate attributeName="stroke-dashoffset" from="0" to="60" dur="4s" begin="1s" repeatCount="indefinite" />
+  </line>
+  <line x1="550" y1="465" x2="700" y2="415" stroke="#4DD0E1" stroke-width="1.5" stroke-dasharray="3,3">
+    <animate attributeName="stroke-dashoffset" from="0" to="60" dur="4s" begin="2s" repeatCount="indefinite" />
+  </line>
+  
+  <!-- Mesh Network Visualization -->
+  <g opacity="0.4">
+    <line x1="250" y1="475" x2="400" y2="455" stroke="#B3E5FC" stroke-width="1" />
+    <line x1="400" y1="455" x2="550" y2="465" stroke="#B3E5FC" stroke-width="1" />
+    <line x1="250" y1="475" x2="550" y2="465" stroke="#B3E5FC" stroke-width="1" stroke-dasharray="5,5" />
+  </g>
+  
+  <!-- Title and Key Information -->
+  <rect x="20" y="20" width="400" height="120" rx="10" ry="10" fill="rgba(0,0,0,0.7)" />
+  <text x="40" y="50" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">GPS-Independent Drone Command & Control</text>
+  <text x="40" y="80" font-family="Arial, sans-serif" font-size="16" fill="#80DEEA">LoRaWAN Mesh Network Architecture</text>
+  <text x="40" y="110" font-family="Arial, sans-serif" font-size="14" fill="#B3E5FC">Human-in-the-loop with resilient communications</text>
+  
+  <!-- No GPS Indicator -->
+  <g transform="translate(500, 100)">
+    <circle cx="0" cy="0" r="25" fill="rgba(0,0,0,0.7)" stroke="#FF5252" stroke-width="2" />
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">GPS</text>
+    <line x1="-18" y1="-18" x2="18" y2="18" stroke="#FF5252" stroke-width="3" />
+    <text x="0" y="50" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">GPS-Denied Environment</text>
+  </g>
+</svg>`;
+                            
+                            const iframe = document.getElementById('lorawan-svg-container');
+                            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                            
+                            iframeDoc.open();
+                            iframeDoc.write('<!DOCTYPE html><html><head><style>body{margin:0;padding:0;overflow:hidden;}</style></head><body>' + svgContent + '</body></html>');
+                            iframeDoc.close();
+                        });
+                    </script>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title" onclick="toggleDescription(this)">GPS-Independent Drone Command & Control Network</h3>
+                    <div class="product-description">
+                        <p>Our specialized LoRaWAN-based communication system creates a resilient network for drone operations in GPS-denied environments. The architecture includes ground-based LoRa sensors, gateway nodes, and a comprehensive network server that maintains reliable links between operators and drones across challenging terrain.</p>
+                        <p>The system features a human-in-the-loop interface through the drone station component, allowing real-time operator intervention and decision-making. This flexible infrastructure enables command transmission, telemetry monitoring, and mission adaptation in environments where traditional navigation and communication methods are compromised or unavailable.</p>
+                        
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Key Features:</span>
+                                <span class="spec-value">GPS-independent operation</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Flying data mule capability</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Distributed sensor integration</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label"></span>
+                                <span class="spec-value">Resilient mesh networking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     
-    <section class="products" id="products">
+    <section class="innovation" id="innovation">
+        <div class="section-header">
+            <h2 class="section-title">R&D Capabilities</h2>
+            <p class="section-subtitle">Developing advanced technology solutions with flexible partnership models for diverse clients</p>
+        </div>
         <div class="product-grid">
             <div class="product-card">
-                <div class="product-image">
-                    <img src="20250514_1506_Drone Over Desert_storyboard_01jv8dbpcnf42txz4a1506djd6.gif" alt="Edge AI-Driven Drone Operation" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
-                    <div class="category-tag">AUTONOMOUS</div>
+                <div style="height: 200px; background-color: rgba(20, 20, 20, 0.8); display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                        <circle cx="12" cy="20" r="2"></circle>
+                    </svg>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-title" onclick="toggleDescription(this)">Edge AI-Driven Drone Operation with Object Detection</h3>
-                    <div class="product-description">
-                        <p>Our advanced autonomous drone surveillance system leverages Edge AI technology for real-time object detection, sectional identification, and target tracking. Operating seamlessly even in non-GPS environments, this system maintains continuous situational awareness while ensuring human oversight for critical decisions.</p>
-                        <p>Key features include AI-powered object detection, intelligent obstacle avoidance, sectional identification of objects and vehicles, and secure, encrypted communications—optimized for reliable performance in complex and dynamic environments.</p>
-                    </div>
+                    <h3 class="product-title">Custom Technology Development</h3>
+                    <p>Our team specializes in developing custom technology solutions tailored to specific operational requirements. We work closely with clients to understand their unique challenges and create innovative solutions that address their exact needs.</p>
                 </div>
             </div>
             
             <div class="product-card">
-                <div class="product-image">
-                    <img src="dronedetect.gif" alt="Drone Detection & Response Solutions" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
-                    <div class="category-tag">COUNTER-UAS</div>
+                <div style="height: 200px; background-color: rgba(20, 20, 20, 0.8); display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <path d="M10 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+                        <line x1="12" y1="12" x2="12" y2="12"></line>
+                        <rect x="9" y="7" width="6" height="10" rx="1"></rect>
+                    </svg>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-title" onclick="toggleDescription(this)">Drone Detection and Response Solutions</h3>
-                    <div class="product-description">
-                        <p>Our system uses advanced RF and Software-Defined Radio (SDR) technology to detect, track, and respond to unauthorized drones. It identifies drone signals across various frequency ranges, providing early alerts even in challenging environments.</p>
-                        <p>Designed for flexibility, the solution can be deployed as a fixed installation or quickly set up in the field. It offers detailed spectrum analysis, automatic threat identification, and a range of response options, including signal disruption or safe intervention. This system is ideal for environments where proactive drone management is essential.</p>
-                    </div>
+                    <h3 class="product-title">Rapid Prototyping</h3>
+                    <p>We excel at rapidly developing working prototypes to test concepts and validate solutions. Our agile approach allows us to quickly iterate on designs based on testing and feedback, significantly reducing time-to-market for critical technologies.</p>
                 </div>
             </div>
             
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="lorawan.gif" alt="LoRaWAN Communication Solution" onerror="this.onerror=null; this.src='#'; this.parentElement.innerHTML += '<div style=\'position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background-color:#333; color:rgba(255,255,255,0.5); font-size:0.9rem;\'>Image not available</div>';">
-                    <div class="category-tag">COMMUNICATIONS</div>
+                            <div class="product-card">
+                <div style="height: 200px; background-color: rgba(20, 20, 20, 0.8); display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 3v18"/>
+                        <path d="M3 12h18"/>
+                        <path d="M3 6h18"/>
+                        <path d="M3 18h18"/>
+                    </svg>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-title" onclick="toggleDescription(this)">LoRaWAN Communication Solution</h3>
-                    <div class="product-description">
-                        <p>Our LoRaWAN-based communication system enables drones to maintain reliable connectivity with ground units over extensive distances, even in non-GPS environments. This technology provides secure, low-power, long-range communication essential for operations in remote or challenging terrain.</p>
-                        <p>With transmission ranges up to 10km in optimal conditions and mesh networking capabilities, our solution ensures continuous tactical communications in areas where traditional networks fail. The system supports encrypted data transfer, real-time telemetry, and command relay with minimal latency.</p>
-                    </div>
+                    <h3 class="product-title">Customized Solutions & Supply Chain Control</h3>
+                    <p>We build custom solutions tailored to client specifications, including precise control over the supply chain and component sourcing. For clients with specific requirements about technology origins, we offer complete transparency and flexibility—whether you need to avoid components from certain countries, require domestically manufactured parts, or have other sourcing criteria. Our adaptive approach ensures your solution meets both technical requirements and strategic sourcing policies.</p>
                 </div>
             </div>
         </div>
@@ -519,97 +1160,102 @@
         <div class="contact-container">
             <div class="contact-flex">
                 <div class="contact-left">
-                    <h2>Write to Us</h2>
-                    <p>Have a question, proposed collaboration or more for the TactixGlobalAI team? Fill out the form below and we'll get back to you shortly.</p>
-                    
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="required">First Name</label>
-                                <input type="text" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Last Name</label>
-                                <input type="text" required>
-                            </div>
-                        </div>
+                    <div class="contact-form">
+                        <h2>Contact Us</h2>
+                        <p>Interested in discussing a potential R&D project or technology development? Fill out the form below to start a conversation with our team.</p>
                         
-                        <div class="form-row">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="required">First Name</label>
+                                    <input type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">Last Name</label>
+                                    <input type="text" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="required">Phone</label>
+                                    <input type="tel" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">Email</label>
+                                    <input type="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group" style="width: 100%;">
+                                    <label>Department/Agency/Company</label>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select id="country">
+                                        <option value="">Select Country</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>State/Province</label>
+                                    <select id="state">
+                                        <option value="">Select State/Province</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                <div class="form-group">
+                                    <label class="required">Inquiry Type</label>
+                                    <select required>
+                                        <option value="">Please Select</option>
+                                        <option value="general">General Information</option>
+                                        <option value="research">Research Collaboration</option>
+                                        <option value="custom">Custom Development</option>
+                                        <option value="partnership">Technology Partnership</option>
+                                        <option value="prototype">Prototype Request</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">Organization Type</label>
+                                    <select required>
+                                        <option value="">Please Select</option>
+                                        <option value="government">Government</option>
+                                        <option value="defense">Defense</option>
+                                        <option value="research">Research Institution</option>
+                                        <option value="commercial">Commercial</option>
+                                        <option value="startup">Startup</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
-                                <label class="required">Phone</label>
-                                <input type="tel" required>
+                                <label>Technical Requirements</label>
+                                <textarea placeholder="Please describe your project requirements or technical specifications..."></textarea>
                             </div>
-                            <div class="form-group">
-                                <label class="required">Email</label>
-                                <input type="email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group" style="width: 100%;">
-                                <label>Department/Agency/Company</label>
-                                <input type="text">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Country</label>
-                                <select id="country">
-                                    <option value="">Select Country</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>State/Province</label>
-                                <select id="state">
-                                    <option value="">Select State/Province</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="required">Inquiry Type</label>
-                                <select required>
-                                    <option value="">Please Select</option>
-                                    <option value="general">General Information</option>
-                                    <option value="product">Product Inquiry</option>
-                                    <option value="partnership">Partnership</option>
-                                    <option value="demo">Demo Request</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Agency Type</label>
-                                <select required>
-                                    <option value="">Please Select</option>
-                                    <option value="law">Law Enforcement</option>
-                                    <option value="military">Military</option>
-                                    <option value="government">Government</option>
-                                    <option value="private">Private Sector</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Notes</label>
-                            <textarea></textarea>
-                        </div>
-                        
-                        <button type="submit" class="button" style="margin-top: 20px;">Submit</button>
-                    </form>
+                            
+                            <button type="submit" class="button" style="margin-top: 20px;">Submit Inquiry</button>
+                            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Our team typically responds to inquiries within 1-2 business days.</p>
+                        </form>
+                    </div>
                 </div>
                 
                 <div class="contact-right">
                     <div class="contact-info">
-                        <h3>Contacts</h3>
+                        <h3>Contact Information</h3>
                         <p class="contact-detail">+1 (888) 555-0123</p>
                         <p class="contact-detail">
-                            <a href="mailto:contact@tactixGlobal.AI" class="contact-email">contact@tactixGlobal.AI</a>
+                            <a href="mailto:contact@tactixGlobal.ai" class="contact-email">contact@tactixGlobal.ai</a>
                         </p>
                         
-                        <h3 style="margin-top: 40px;">Headquarters</h3>
+                        <h3 style="margin-top: 40px;">Research Facility</h3>
                         <p class="contact-detail">1234 Tech Drive</p>
                         <p class="contact-detail">Simi Valley, CA 93065</p>
                     </div>
@@ -619,7 +1265,56 @@
     </section>
     
     <footer>
-        <p class="footer-text">© 2025 TACTIXGLOBAL.AI. A division of BIGDOG SERVICES LLC. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-heading">Solutions</h3>
+                <ul class="footer-links">
+                    <li><a href="#products">Counter-UAS Systems</a></li>
+                    <li><a href="#products">Autonomous Drones</a></li>
+                    <li><a href="#products">Secure Communications</a></li>
+                    <li><a href="#products">Edge AI Solutions</a></li>
+                    <li><a href="#products">Surveillance Systems</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#team">Leadership</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Technical Documentation</a></li>
+                    <li><a href="#">White Papers</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Standards Compliance</a></li>
+                    <li><a href="#">Support Portal</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Export Compliance</a></li>
+                    <li><a href="#">ITAR Restrictions</a></li>
+                    <li><a href="#">Acceptable Use</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-text">© 2025 TACTIXGLOBAL. A division of BIGDOG SERVICES LLC. All rights reserved.</p>
+            <p class="footer-text" style="margin-top: 10px; font-size: 0.75rem;">Information on this site may be subject to U.S. export control laws and regulations. ITAR Registered - DDTC M-XXXXX</p>
+        </div>
     </footer>
     
     <script>
@@ -630,12 +1325,17 @@
             
             // First close all other descriptions
             allDescriptions.forEach(desc => {
-                desc.classList.remove('expanded');
-                desc.style.height = '0';
+                if (desc !== description) {
+                    desc.classList.remove('expanded');
+                    desc.style.height = '0';
+                }
             });
             
-            // Then expand the clicked one if it wasn't already expanded
-            if (!description.classList.contains('expanded')) {
+            // Then toggle the clicked one
+            if (description.classList.contains('expanded')) {
+                description.classList.remove('expanded');
+                description.style.height = '0';
+            } else {
                 description.classList.add('expanded');
                 description.style.height = description.scrollHeight + 'px';
             }
@@ -655,12 +1355,6 @@
                     contactSection.classList.add('active');
                     contactSection.style.display = 'block';
                     
-                    // Ensure title is "Write to Us"
-                    const contactTitle = contactSection.querySelector('h2');
-                    if (contactTitle) {
-                        contactTitle.textContent = 'Write to Us';
-                    }
-                    
                     // Scroll to contact section
                     contactSection.scrollIntoView({ behavior: 'smooth' });
                 });
@@ -671,11 +1365,24 @@
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Form submitted! In a production environment, this would send an email to contact@tactixGlobal.AI');
+                    alert('Your secure inquiry has been submitted. A TactixGlobal representative will contact you within 24 hours.');
                 });
             }
             
-            // Populate country dropdown with proper initialization
+            // Smooth scrolling for all internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#' && document.querySelector(targetId)) {
+                        e.preventDefault();
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Populate country dropdown
             const countrySelect = document.getElementById('country');
             const stateSelect = document.getElementById('state');
             
@@ -689,19 +1396,19 @@
                     { name: 'Germany', code: 'DE' },
                     { name: 'France', code: 'FR' },
                     { name: 'Japan', code: 'JP' },
-                    { name: 'China', code: 'CN' },
-                    { name: 'India', code: 'IN' },
-                    { name: 'Brazil', code: 'BR' },
-                    { name: 'Mexico', code: 'MX' },
-                    { name: 'South Korea', code: 'KR' },
-                    { name: 'Spain', code: 'ES' },
-                    { name: 'Italy', code: 'IT' },
-                    { name: 'Netherlands', code: 'NL' },
-                    { name: 'South Africa', code: 'ZA' },
-                    { name: 'Singapore', code: 'SG' },
                     { name: 'Israel', code: 'IL' },
-                    { name: 'New Zealand', code: 'NZ' },
-                    { name: 'United Arab Emirates', code: 'AE' }
+                    { name: 'United Arab Emirates', code: 'AE' },
+                    { name: 'Saudi Arabia', code: 'SA' },
+                    { name: 'South Korea', code: 'KR' },
+                    { name: 'Italy', code: 'IT' },
+                    { name: 'Spain', code: 'ES' },
+                    { name: 'Poland', code: 'PL' },
+                    { name: 'Netherlands', code: 'NL' },
+                    { name: 'Norway', code: 'NO' },
+                    { name: 'Sweden', code: 'SE' },
+                    { name: 'Denmark', code: 'DK' },
+                    { name: 'Finland', code: 'FI' },
+                    { name: 'Singapore', code: 'SG' }
                 ];
                 
                 const states = {
